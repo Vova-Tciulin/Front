@@ -21,6 +21,7 @@
                 <li><a href="#content_4">JIT-компиляция</a></li>
                 <li><a href="#content_5">Первое приложение на C#</a></li>
                 <li><a href="#content_6">Опрос</a></li>
+                <li><a href="#content_7">Погода</a></li>
             </ul>
         </div>
         <div class="column">
@@ -200,6 +201,16 @@
                     </form>
                 </div>
             </div>
+            <div id="content_7">
+                <h1>Информация о погоде.</h1>
+                <p>
+                    Информация была взята с сайта:<a href="https://www.weather.gov/">National Weather Service</a>
+                </p>
+                <p>
+                    <button onclick="getWeather()">Тыкни на меня</button>
+                </p>
+                <div id="forecast"></div>
+            </div>
         </div>
         <div class="sideBar column"></div>
     </div>
@@ -217,5 +228,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="getWeather.js"></script>
 </body>
 </html>
