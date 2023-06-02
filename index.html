@@ -257,22 +257,22 @@
   
           render() {
             return (
-              <div>
-                <label htmlFor="name">Ваше имя:</label>
-                <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleNameChange} required />
+                <div>
+                    <label htmlFor="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleNameChange} required />
   
-                <label htmlFor="select">Оцените данную статью от 1 до 5:</label>
-                <select id="select" name="select" value={this.state.rating} onChange={this.handleRatingChange}>
-                  {[1, 2, 3, 4, 5].map((value, index) => (
-                    <option key={index} value={value}>{value}</option>
-                  ))}
-                </select>
-  
-                <label htmlFor="comment">Комментарий:</label>
-                <textarea id="comment" name="comment" value={this.state.comment} onChange={this.handleCommentChange}></textarea>
-  
-                <button type="submit" onClick={this.handleSubmit}>Отправить</button>
-              </div>
+                    <label htmlFor="select">Оцените данную статью от 1 до 5:</label>
+                    <select id="select" name="select" value={this.state.rating} onChange={this.handleRatingChange}>
+                        {[1, 2, 3, 4, 5].map((value, index) => (
+                            <option key={index} value={value}>{value}</option>
+                        ))}
+                    </select>
+    
+                    <label htmlFor="comment">Комментарий:</label>
+                    <textarea id="comment" name="comment" value={this.state.comment} onChange={this.handleCommentChange}></textarea>
+    
+                    <button type="submit" onClick={this.handleSubmit}>Отправить</button>
+                </div>
             );
           }
         }
