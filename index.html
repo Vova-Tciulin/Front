@@ -180,25 +180,7 @@
                 <h1>Опрос</h1>
                 <p>хотелось бы узнать ваше мнение по данной статье. В предложенной ниже форме введите свои данные и ответьте на несколько вопросов.</p>
                 <div class="wrapper">
-                    <form>
-                        <label for="name">Ваше имя:</label>
-                        <input type="text" id="name" name="name" required>
-                    
-                        <label for="select">Оцените данну статью от 1 до 5:</label>
-                        <select id="select" name="select">
-                            <option value="value1">1</option>
-                            <option value="value2">2</option>
-                            <option value="value3">3</option>
-                            <option value="value4">4</option>
-                            <option value="value5">5</option>
-                        </select>
-                    
-
-                        <label for="comment">Комментарий:</label>
-                        <textarea id="comment" name="comment"></textarea>
-                    
-                        <button type="submit">Отправить</button>
-                    </form>
+                    <div id="root"></div>
                 </div>
             </div>
             <div id="content_7">
@@ -230,5 +212,72 @@
     </footer>
 
     <script src="getWeather.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        class Form extends React.Component {
+          constructor(props) {
+            super(props);
+  
+            this.state = {
+              name: '',
+              rating: '',
+              comment: ''
+            };
+  
+            this.handleNameChange = this.handleNameChange.bind(this);
+            this.handleRatingChange = this.handleRatingChange.bind(this);
+            this.handleCommentChange = this.handleCommentChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+          }
+  
+          handleNameChange(event) {
+            this.setState({ name: event.target.value });
+          }
+  
+          handleRatingChange(event) {
+            this.setState({ rating: event.target.value });
+          }
+  
+          handleCommentChange(event) {
+            this.setState({ comment: event.target.value });
+          }
+  
+          handleSubmit(event) {
+            event.preventDefault();
+            alert(`Вы ввели имя: ${this.state.name}, оценку: ${this.state.rating} и комментарий: ${this.state.comment}`);
+  
+            this.setState({
+              name: '',
+              rating: '',
+              comment: ''
+            });
+          }
+  
+          render() {
+            return (
+              <div>
+                <label htmlFor="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleNameChange} required />
+  
+                <label htmlFor="select">Оцените данную статью от 1 до 5:</label>
+                <select id="select" name="select" value={this.state.rating} onChange={this.handleRatingChange}>
+                  {[1, 2, 3, 4, 5].map((value, index) => (
+                    <option key={index} value={value}>{value}</option>
+                  ))}
+                </select>
+  
+                <label htmlFor="comment">Комментарий:</label>
+                <textarea id="comment" name="comment" value={this.state.comment} onChange={this.handleCommentChange}></textarea>
+  
+                <button type="submit" onClick={this.handleSubmit}>Отправить</button>
+              </div>
+            );
+          }
+        }
+  
+        ReactDOM.render(<Form />, document.getElementById('root'));
+    </script>
 </body>
 </html>
